@@ -96,6 +96,13 @@ span {
 
 .controls {
     margin-top: 10px;
+    padding: 10px;
+
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.controls > div {
+    margin-left: 10px;
 }
 
 .controls > div:hover {

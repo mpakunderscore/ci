@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, 'web')));
 
 let server = require('http').Server(app);
 
-const port = process.env.PORT || 4040;
+const port = process.env.CI_PORT || 4040;
 
 app.get('/services', function (request, response) {
     response.json(services());
