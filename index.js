@@ -3,6 +3,8 @@
 let express = require('express');
 let path = require('path');
 
+require('./server/config.js')
+
 let app = express();
 
 //STATIC WEB
@@ -17,8 +19,6 @@ app.get('/services', function (request, response) {
 });
 
 server.listen(port);
-
-require('./server/config.js')
 
 let services = require('./server/services.js');
 
