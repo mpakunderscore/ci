@@ -18,10 +18,12 @@ app.get('/services', function (request, response) {
 
 server.listen(port);
 
-
-
 require('./server/config.js')
 
 let services = require('./server/services.js');
+
+let memory = require('./server/memory.js');
+
+let speedtest = require('./server/speedtest.js');
 
 

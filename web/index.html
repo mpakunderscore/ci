@@ -26,22 +26,45 @@
 
             <div class="block">
                 <div class="name">
-                    Status
+                    Server
                 </div>
-                <div class="logs">
+                <div>Status<span>online</span></div>
+                <div>Memory<span>37.0% used 300mb</span></div>
+                <div>CPU<span>2.0% used</span></div>
+                <div>FS<span>33% used 2.5gb</span></div>
+            </div>
 
-
+            <div class="block">
+                <div class="name">
+                    Internet
                 </div>
+                <div>Upload</div>
+                <div>Download</div>
+                <div>Ping</div>
+            </div>
+
+            <div class="block">
+                <div class="name">
+                    Nginx
+                </div>
+                <div>:80 > :3000</div>
+                <div>:80/api > :8000</div>
             </div>
 
             <div class="block">
                 <div class="name">
                     Frontend
                 </div>
-                <div>Commit message</div>
+                <div>Commit message (id)</div>
                 <div class="controls">
-                    <div>Pull (specific)</div>
-                    <div>Build (prod)</div>
+                    <div>Git pull (specific)</div>
+                    <div>Start</div>
+                    <div>Build and start prod</div>
+                    <div>Stop</div>
+                </div>
+
+                <div class="logs">
+
                 </div>
             </div>
 
@@ -49,11 +72,34 @@
                 <div class="name">
                     Backend
                 </div>
+                <div>Commit message (id)</div>
+                <div class="controls">
+                    <div>Git pull (specific)</div>
+                    <div>Start default</div>
+                    <div>Start heroku</div>
+                    <div>Stop</div>
+                </div>
             </div>
 
             <div class="block">
                 <div class="name">
-                    MongoDB
+                    Database
+                </div>
+                <div>pi:localhost:57653/dev</div>
+                <div class="controls">
+                    <div>Backup</div>
+                    <div>Restore</div>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="name">
+                    Database
+                </div>
+                <div>heroku_jn009l6b:elm0hevpg007e6opsd5d0ei2mn@ds157653.mlab.com:57653/heroku_jn009l6b</div>
+                <div class="controls">
+                    <div>Backup</div>
+                    <div>Restore</div>
                 </div>
             </div>
 

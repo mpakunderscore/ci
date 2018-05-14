@@ -5,6 +5,7 @@ let services = [
     {name: 'node-mongo-frontend', run: 'npm run start'}
 ];
 
+// {name: 'node-mongo-backend', run: 'npm start default'},
 // {name: 'node-mongo-frontend', run: 'npm run start'}
 
 let state = {};

@@ -7,8 +7,10 @@
     "child_process": "^1.0.2",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
+    "free-memory": "^1.0.0",
     "http": "^0.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "speedtest-net": "^1.4.2"
   },
   "devDependencies": {},
   "scripts": {
