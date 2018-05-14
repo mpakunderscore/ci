@@ -33,6 +33,8 @@ for (let i = 0; i < services.length; i++) {
         [service.run.split(' ')[1], service.run.split(' ')[2]],
         {cwd: home + service.name});
 
+    child.stdin.setEncoding('utf-8');
+
     child.stdout.on('data', function (data) {
         process.stdout.write(data);
         logs[service.name].push(data.toString());

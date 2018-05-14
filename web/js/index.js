@@ -8,15 +8,26 @@ let onLoad = function () {
 
             for (let id in data) {
 
-                console.log(data[id])
+                // let fixedLogs = data[id].logs;
 
-                for (let i = 0; i < data[id].logs.length; i++) {
-                    // console.log(data[id].logs[i])
-                    // console.log(document.getElementById(id))
+                let logsString = data[id].logs.join('').replace(/\[\d{1,2}m/g, '');
+
+                // let match = logsString.match('/[d{1,2}m/i')
+
+                // console.log(match)
+
+                let fixedLogs = logsString.split('\n');
+
+                for (let i = 0; i < fixedLogs.length; i++) {
+
                     let div = document.createElement("div");
-                    div.innerText = data[id].logs[i];
+                    if (fixedLogs[i] === "")
+                        fixedLogs[i] = "\n";
+
+                    div.innerText = fixedLogs[i];
                     document.getElementById(id).appendChild(div);
                 }
+
             }
         }
     });
