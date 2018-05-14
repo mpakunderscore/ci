@@ -14,7 +14,7 @@ let server = require('http').Server(app);
 
 const port = process.env.CI_PORT || 4040;
 
-app.get('/services', function (request, response) {
+app.get('/ci/services', function (request, response) {
     response.json(services());
 });
 
@@ -25,5 +25,3 @@ let services = require('./server/services.js');
 // let memory = require('./server/memory.js');
 
 // let speedtest = require('./server/speedtest.js');
-
-

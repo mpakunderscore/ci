@@ -20,9 +20,13 @@
 
     </head>
 
-    <body>
+    <body onload="onLoad()">
 
         <main>
+
+            <div class="block" style="padding: 0">
+                <img src="images/ci.png" style="width: 100%; display: block">
+            </div>
 
             <div class="block">
                 <div class="name">
@@ -49,6 +53,7 @@
                 </div>
                 <div>:80 > :3000</div>
                 <div>:80/api > :8000</div>
+                <div>:80/ci > :4000</div>
             </div>
 
             <div class="block">
@@ -63,9 +68,8 @@
                     <div>Stop</div>
                 </div>
 
-                <div class="logs">
-
-                </div>
+            </div>
+            <div class="paper" id="node-mongo-frontend">
             </div>
 
             <div class="block">
@@ -80,8 +84,7 @@
                     <div>Stop</div>
                 </div>
             </div>
-            <div class="paper">
-                Some logs
+            <div class="paper" id="node-mongo-backend">
             </div>
 
             <div class="block">

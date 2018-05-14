@@ -1,56 +1,39 @@
-function on() {
-    document.querySelector("#outside").style.backgroundColor = "#3dc7ff";
-}
+let onLoad = function () {
 
-function off() {
-    document.querySelector("#outside").style.backgroundColor = "black";
-}
+    getJSON('/ci/services', function(err, data) {
 
-function showDescription(block) {
-    // console.log(block)
-    block.classList.add("stick");
-}
+        if (err !== null) {
 
-function openDescription(block) {
-    block = block.nextSibling.nextSibling;
-    console.log(block)
-    block.style.height = "auto";
-}
+        } else {
 
-function load(href) {
+            for (let id in data) {
 
-    let request = new XMLHttpRequest();
-    request.open("GET", href, false);
-    request.send();
-    return request.responseText;
-}
+                console.log(data[id])
 
-function field(event) {
+                for (let i = 0; i < data[id].logs.length; i++) {
+                    // console.log(data[id].logs[i])
+                    // console.log(document.getElementById(id))
+                    let div = document.createElement("div");
+                    div.innerText = data[id].logs[i];
+                    document.getElementById(id).appendChild(div);
+                }
+            }
+        }
+    });
+};
 
-    // let field = event.target;
+let getJSON = function(url, callback) {
 
-    // if (field.textContent.startsWith("Project "))
-    //     field.textContent = "";
-
-    // console.log("field");
-    // console.log(field.textContent);
-
-    // field.textContent = "";
-}
-
-function submit() {
-
-    let fields = document.getElementById("idea").getElementsByClassName("field");
-
-    console.log(fields[0].value)
-    console.log(fields[1].innerText)
-    // console.log(fields[2].value)
-
-    sendIdea(fields[0].value, fields[1].innerText);
-
-    fields[0].value = "";
-    fields[1].innerHTML = ">&nbsp;";
-    fields[2].value = "";
-
-
-}
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+        let status = xhr.status;
+        if (status === 200) {
+            callback(null, xhr.response);
+        } else {
+            callback(status, xhr.response);
+        }
+    };
+    xhr.send();
+};
