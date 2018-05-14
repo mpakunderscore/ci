@@ -3,13 +3,15 @@
     body {
         padding-bottom: 0;
     }
-    header {
+    main {
+        width: 100%;
     }
     .block {
-        margin: 0;
-        border: none;
+        width: 100%;
+        /*margin: 0;*/
+        /*border: none;*/
 
-        border-bottom: 1px solid gray;
-        border-radius: 0;
+        /*border-bottom: 1px solid gray;*/
+        /*border-radius: 0;*/
     }
 }

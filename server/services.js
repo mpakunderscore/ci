@@ -9,7 +9,9 @@ let state = {};
 
 let logs = {};
 
-let home = '';
+let home = process.env.PROJECTS;
+
+console.log(home);
 
 let spawn = require('child_process').spawn;
 
@@ -40,8 +42,8 @@ for (let i = 0; i < services.length; i++) {
     });
 
     child.on('exit', function (data) {
-        process.stdout.write('I\'m done!');
-        state[service.name].status = 'dead';
+        process.stdout.write('exit');
+        state[service.name].status = 'exit';
     });
 }
 

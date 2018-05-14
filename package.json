@@ -1,18 +1,27 @@
 {
   "name": "ci",
   "version": "1.0.0",
-  "description": "CI for leaf",
+  "description": "",
   "main": "index.js",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "http": "^0.0.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
   "scripts": {
-    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpakunderscore/ci.git"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "child_process": "^1.0.2",
-    "express": "^4.16.2",
-    "http": "0.0.0",
-    "path": "^0.12.7"
-  }
+  "bugs": {
+    "url": "https://github.com/mpakunderscore/ci/issues"
+  },
+  "homepage": "https://github.com/mpakunderscore/ci#readme"
 }
