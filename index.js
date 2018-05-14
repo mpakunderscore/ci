@@ -22,8 +22,8 @@ require('./server/config.js')
 
 let services = require('./server/services.js');
 
-let memory = require('./server/memory.js');
+// let memory = require('./server/memory.js');
 
-let speedtest = require('./server/speedtest.js');
+// let speedtest = require('./server/speedtest.js');
 
 
