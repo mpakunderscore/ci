@@ -18,6 +18,10 @@ app.get('/services', function (request, response) {
 
 server.listen(port);
 
+
+
+require('./server/config.js')
+
 let services = require('./server/services.js');
 
 

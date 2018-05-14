@@ -1,3 +1,5 @@
+let path = require('path');
+
 let services = [
     {name: 'node-mongo-backend', run: 'npm start heroku'},
     {name: 'node-mongo-frontend', run: 'npm run start'}
@@ -9,9 +11,9 @@ let state = {};
 
 let logs = {};
 
-let home = process.env.PROJECTS;
+let home = process.env.CI_HOME;
 
-console.log(home);
+// console.log(home)
 
 let spawn = require('child_process').spawn;
 
