@@ -8,7 +8,7 @@ require('./server/config.js')
 let app = express();
 
 //STATIC WEB
-app.use(express.static(path.join(__dirname, 'web')));
+app.use('/ci', express.static(path.join(__dirname, 'web')));
 
 let server = require('http').Server(app);
 
