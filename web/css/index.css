@@ -47,7 +47,7 @@ main {
     flex-direction: column;
     justify-content: space-around;
 
-    overflow: hidden;
+    /*fuck this bug on my phone with left padding :( */
 }
 
 .block {
