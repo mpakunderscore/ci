@@ -1,4 +1,5 @@
 let git = require('./git.js');
+let vars = require('./vars.js');
 
 let services = [
     {name: 'node-mongo-backend', run: 'npm start heroku'},
@@ -24,6 +25,9 @@ module.exports.run = function () {
 
         state[service.name] = {};
 
+        //status
+        state[service.name].status = 'run';
+
         //logs
         state[service.name].logs = [];
 
@@ -31,8 +35,7 @@ module.exports.run = function () {
         git.show(service.name).then(show => state[service.name].commit = show);
 
         //vars
-        state[service.name].vars = [];
-
+        state[service.name].vars = vars.get(service.name);
 
 
         // Notice how your arguments are in an array of strings

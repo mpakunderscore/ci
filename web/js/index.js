@@ -1,76 +1,59 @@
+let state = {};
+
+function fillBlock(id, data) {
+
+    document.getElementById(id).innerText = '';
+
+    for (let i = 0; i < data.length; i++) {
+
+        let div = document.createElement("div");
+        if (data[i] === "")
+            data[i] = "\n";
+
+        div.innerText = data[i];
+        document.getElementById(id).appendChild(div);
+    }
+}
+
 let onLoad = function () {
 
-    getJSON('/services', function(err, data) {
+    getJSON('/state', function(err, data) {
 
         if (err !== null) {
 
         } else {
 
             for (let id in data) {
+
+                state[id] = {};
 
                 // let fixedLogs = data[id].logs;
 
                 let logsString = data[id].logs.join('').replace(/\[\d{1,2}m/g, '');
 
-                // let match = logsString.match('/[d{1,2}m/i')
+                state[id].logs = logsString.split('\n');
 
-                // console.log(match)
+                state[id].commit = data[id].commit.split('\n');
 
-                let fixedLogs = logsString.split('\n');
+                state[id].vars = data[id].vars.split('\n');
 
-                for (let i = 0; i < fixedLogs.length; i++) {
-
-                    let div = document.createElement("div");
-                    if (fixedLogs[i] === "")
-                        fixedLogs[i] = "\n";
-
-                    div.innerText = fixedLogs[i];
-                    document.getElementById(id).appendChild(div);
-                }
-
+                fillBlock(id, state[id].logs);
             }
         }
     });
 };
 
-let commit = function () {
+let logs = function (id) {
+    fillBlock(id, state[id].logs);
+};
 
-    getJSON('/services', function(err, data) {
+let vars = function (id) {
+    fillBlock(id, state[id].vars);
+};
 
-        if (err !== null) {
-
-        } else {
-
-            for (let id in data) {
-
-                // let fixedLogs = data[id].logs;
-
-                document.getElementById(id).innerText = '';
-
-
-
-                let logsString = data[id].commit.replace(/ /g, ' ');
-
-                // let match = logsString.match('/[d{1,2}m/i')
-
-                // console.log(match)
-
-                let fixedLogs = logsString.split('\n');
-
-                for (let i = 0; i < 5; i++) {
-
-                    let div = document.createElement("div");
-                    if (fixedLogs[i] === "")
-                        fixedLogs[i] = "\n";
-
-                    div.innerText = fixedLogs[i];
-                    document.getElementById(id).appendChild(div);
-                }
-
-            }
-        }
-    });
-}
+let commit = function (id) {
+    fillBlock(id, state[id].commit);
+};
 
 let getJSON = function(url, callback) {
 

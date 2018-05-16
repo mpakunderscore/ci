@@ -14,7 +14,7 @@ let server = require('http').Server(app);
 
 const port = process.env.CI_PORT || 4000;
 
-app.get('/ci/services', function (request, response) {
+app.get('/ci/state', function (request, response) {
     response.json(services.getState());
 });
 
