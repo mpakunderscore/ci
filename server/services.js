@@ -1,4 +1,4 @@
-let path = require('path');
+let git = require('./git.js');
 
 let services = [
     {name: 'node-mongo-backend', run: 'npm start heroku'},
@@ -10,51 +10,56 @@ let services = [
 
 let state = {};
 
-let logs = {};
-
 let home = process.env.CI_HOME;
 
 // console.log(home)
 
 let spawn = require('child_process').spawn;
 
-for (let i = 0; i < services.length; i++) {
+module.exports.run = function () {
 
-    let service = services[i];
+    for (let i = 0; i < services.length; i++) {
 
-    state[service.name] = {};
+        let service = services[i];
 
-    logs[service.name] = [];
+        state[service.name] = {};
 
-    state[service.name].logs = logs[service.name];
+        //logs
+        state[service.name].logs = [];
 
-    // Notice how your arguments are in an array of strings
-    let child = spawn(service.run.split(' ')[0],
-        [service.run.split(' ')[1], service.run.split(' ')[2]],
-        {cwd: home + service.name});
+        //commit
+        git.show(service.name).then(show => state[service.name].commit = show);
 
-    child.stdin.setEncoding('utf-8');
+        //vars
+        state[service.name].vars = [];
 
-    child.stdout.on('data', function (data) {
-        process.stdout.write(data);
-        logs[service.name].push(data.toString());
-    });
 
-    child.stderr.on('data', function (data) {
-        process.stdout.write(data);
-        logs[service.name].push(data.toString());
-        state[service.name].status = 'error';
-    });
 
-    child.on('exit', function (data) {
-        process.stdout.write('exit');
-        state[service.name].status = 'exit';
-    });
-}
+        // Notice how your arguments are in an array of strings
+        let child = spawn(service.run.split(' ')[0],
+            [service.run.split(' ')[1], service.run.split(' ')[2]],
+            {cwd: home + service.name});
 
-function getState() {
+        child.stdin.setEncoding('utf-8');
 
+        child.stdout.on('data', function (data) {
+            process.stdout.write(data);
+            state[service.name].logs.push(data.toString());
+        });
+
+        child.stderr.on('data', function (data) {
+            process.stdout.write(data);
+            state[service.name].logs.push(data.toString());
+            state[service.name].status = 'error';
+        });
+
+        child.on('exit', function (data) {
+            process.stdout.write('exit');
+            state[service.name].status = 'exit';
+        });
+    }
+};
+
+module.exports.getState = function () {
     return state;
-}
-
-module.exports = getState;
+};

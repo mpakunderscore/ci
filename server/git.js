@@ -1,45 +1,41 @@
 // https://github.com/RockMother/node-mongo-backend.git
 // https://github.com/RockMother/node-mongo-frontend.git
 
-var Git = require("nodegit");
+// let cloneOrPull = require('git-clone-or-pull');
+// let path = require('path');
 
-// Open the repository directory.
-Git.Repository.open("tmp")
-// Open the master branch.
-    .then(function(repo) {
-        return repo.getMasterCommit();
-    })
-    // Display information about commits on master.
-    .then(function(firstCommitOnMaster) {
-        // Create a new history event emitter.
-        var history = firstCommitOnMaster.history();
+let git = require('simple-git');
+const gitPromise = require('simple-git/promise');
 
-        // Create a counter to only show up to 9 entries.
-        var count = 0;
+let home = process.env.CI_HOME;
 
-        // Listen for commit events from the history.
-        history.on("commit", function(commit) {
-            // Disregard commits past 9.
-            if (++count >= 9) {
-                return;
-            }
+// 'node-mongo-backend'
 
-            // Show the commit sha.
-            console.log("commit " + commit.sha());
+module.exports.pull = function (name) {
 
-            // Store the author object.
-            var author = commit.author();
+    git(home + name).pull((err, update) => {
 
-            // Display author information.
-            console.log("Author:\t" + author.name() + " <" + author.email() + ">");
+        if (update && update.summary.changes) {
 
-            // Show the commit date.
-            console.log("Date:\t" + commit.date());
+            console.log(' Update')
 
-            // Give some space and show the message.
-            console.log("\n    " + commit.message());
-        });
+        } else {
 
-        // Start emitting events.
-        history.start();
+            console.log(' Nothing')
+        }
+
     });
+};
+
+module.exports.show = async function (name) {
+
+    let showText = null;
+    try {
+        showText = await gitPromise(home + name).show();
+    }
+    catch (e) {
+        // handle the error
+    }
+
+    return showText;
+};

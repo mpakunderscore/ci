@@ -1,6 +1,6 @@
 let onLoad = function () {
 
-    getJSON('/ci/services', function(err, data) {
+    getJSON('/services', function(err, data) {
 
         if (err !== null) {
 
@@ -33,7 +33,48 @@ let onLoad = function () {
     });
 };
 
+let commit = function () {
+
+    getJSON('/services', function(err, data) {
+
+        if (err !== null) {
+
+        } else {
+
+            for (let id in data) {
+
+                // let fixedLogs = data[id].logs;
+
+                document.getElementById(id).innerText = '';
+
+
+
+                let logsString = data[id].commit.replace(/ /g, ' ');
+
+                // let match = logsString.match('/[d{1,2}m/i')
+
+                // console.log(match)
+
+                let fixedLogs = logsString.split('\n');
+
+                for (let i = 0; i < 5; i++) {
+
+                    let div = document.createElement("div");
+                    if (fixedLogs[i] === "")
+                        fixedLogs[i] = "\n";
+
+                    div.innerText = fixedLogs[i];
+                    document.getElementById(id).appendChild(div);
+                }
+
+            }
+        }
+    });
+}
+
 let getJSON = function(url, callback) {
+
+    url = '/ci' + url;
 
     let xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);

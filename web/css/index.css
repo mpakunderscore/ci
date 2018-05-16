@@ -111,6 +111,25 @@ span {
     color: red;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.buttons:hover {
+    background-color: transparent !important;
+}
+
+.buttons > div {
+    padding-right: 10px;
+}
+
+.buttons > div:hover {
+    cursor: pointer;
+    color: red;
+}
+
 .paper {
     background: rgba(255, 255, 255, 0.7);
     padding: 20px;
