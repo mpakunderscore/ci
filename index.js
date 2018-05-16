@@ -19,7 +19,7 @@ app.get('/ci/state', function (request, response) {
 });
 
 app.get('/ci/git/pull', function (request, response) {
-    response.json(git.pull());
+    response.json(git.pull(request.query.name));
 });
 
 server.listen(port);

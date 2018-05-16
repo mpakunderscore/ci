@@ -55,6 +55,24 @@ let commit = function (id) {
     fillBlock(id, state[id].commit);
 };
 
+let pull = function (name) {
+
+    getJSON('/git/pull?name=' + name, function(err, data) {
+
+        if (err !== null) {
+
+        } else {
+
+            console.log(data);
+
+            for (let id in data) {
+
+                state[name].logs.push(data[id]);
+            }
+        }
+    });
+};
+
 let getJSON = function(url, callback) {
 
     url = '/ci' + url;

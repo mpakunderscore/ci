@@ -11,6 +11,8 @@ let services = [
 
 let state = {};
 
+module.exports.state = state;
+
 let home = process.env.CI_HOME;
 
 // console.log(home)
@@ -30,6 +32,8 @@ module.exports.run = function () {
 
         //logs
         state[service.name].logs = [];
+
+        git.pull(service.name).then(update => state[service.name].pull = update);
 
         //commit
         git.show(service.name).then(show => state[service.name].commit = show);

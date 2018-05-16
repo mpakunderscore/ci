@@ -4,27 +4,38 @@
 // let cloneOrPull = require('git-clone-or-pull');
 // let path = require('path');
 
+let services = require('./services.js');
+
 let git = require('simple-git');
 const gitPromise = require('simple-git/promise');
 
 let home = process.env.CI_HOME;
 
+let message = 'git: Already up to date\n';
+
 // 'node-mongo-backend'
 
-module.exports.pull = function (name) {
+module.exports.pull = async function (name) {
 
-    git(home + name).pull((err, update) => {
+    // console.log('Name: ' + name)
 
-        if (update && update.summary.changes) {
+    let update = null;
+    try {
+        update = await gitPromise(home + name).pull();
+    }
+    catch (e) {
+        // handle the error
+    }
 
-            console.log(' Update')
+    if (update.summary && update.summary.changes) {
 
-        } else {
+        return update.summary.changes;
 
-            console.log(' Nothing')
-        }
+    } else {
 
-    });
+        services.state[name].logs.push(message);
+        return message;
+    }
 };
 
 module.exports.show = async function (name) {

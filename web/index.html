@@ -11,7 +11,7 @@
               type="image/x-icon"
               href="images/web_hi_res_512.png?v=2">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1" />
 
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="css/media.css">
@@ -76,8 +76,9 @@
                 </div>
                 <div>Commit message (id)</div>
                 <div class="controls">
-                    <div>Git pull (specific)</div>
+                    <div onclick="pull('node-mongo-frontend')">Git pull (specific)</div>
                     <div>Start</div>
+                    <div>Install</div>
                     <div>Build and start prod</div>
                     <div>Stop</div>
                     <div>Test</div>
@@ -98,9 +99,10 @@
                 </div>
                 <div>Commit message (id)</div>
                 <div class="controls">
-                    <div>Git pull (specific)</div>
+                    <div onclick="pull('node-mongo-backend')">Git pull (specific)</div>
                     <div>Start default</div>
                     <div>Start heroku</div>
+                    <div>Install</div>
                     <div>Stop</div>
                     <div>Test</div>
                 </div>
@@ -128,7 +130,7 @@
                 <div class="name">
                     Database
                 </div>
-                <div>heroku_jn009l6b:elm0hevpg007e6opsd5d0ei2mn@ds157653.mlab.com:57653/heroku_jn009l6b</div>
+                <!--<div>heroku_jn009l6b:elm0hevpg007e6opsd5d0ei2mn@ds157653.mlab.com:57653/heroku_jn009l6b</div>-->
                 <div class="controls">
                     <div>Backup</div>
                     <div>Restore</div>
