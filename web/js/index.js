@@ -42,6 +42,8 @@ let onLoad = function () {
                 state[id].vars = data[id].vars.split('\n');
 
                 fillBlock(id, state[id].logs);
+
+                // document.getElementById(data)
             }
         }
     });
@@ -59,6 +61,16 @@ let commit = function (id) {
     fillBlock(id, state[id].commit);
 };
 
+function blockOk(name) {
+
+    //TODO
+    document.getElementById(name + '-progress').classList.add('ok');
+    setTimeout(function () {
+        document.getElementById(name + '-progress').classList.remove('ok');
+        document.getElementById(name + '-progress').classList.remove('active');
+    }, 500)
+}
+
 let pull = function (name) {
 
     document.getElementById(name + '-progress').classList.add('active');
@@ -72,16 +84,50 @@ let pull = function (name) {
             console.log(data);
 
             fillBlock(name, data);
-            document.getElementById(name + '-progress').classList.remove('active');
 
-            for (let id in data) {
-
-                // state[name].logs.push(data[id]);
-
-            }
+            blockOk(name);
         }
     });
 };
+
+let run = function (name) {
+
+    document.getElementById(name + '-progress').classList.add('active');
+
+    getJSON('/run?name=' + name, function(err, data) {
+
+        if (err !== null) {
+
+            document.getElementById(name + '-progress').classList.add('error');
+
+        } else {
+
+            blockOk(name);
+        }
+    });
+};
+
+
+let kill = function (name) {
+
+    document.getElementById(name + '-progress').classList.add('active');
+
+    getJSON('/kill?name=' + name, function(err, data) {
+
+        if (err !== null) {
+
+            document.getElementById(name + '-progress').classList.add('error');
+
+        } else {
+
+            // console.log(data);
+
+            fillBlock(name, data);
+
+            blockOk(name);
+        }
+    });
+}
 
 let getJSON = function(url, callback) {
 

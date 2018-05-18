@@ -64,17 +64,24 @@
                 <div>/ci 4000</div>
             </div>
 
+
             <div class="block">
                 <div class="name">
                     CI
                 </div>
                 <div>Commit message (id)</div>
                 <div class="controls">
-                    <div>Git pull</div>
+                    <div onclick="pull('ci')">Git pull</div>
                     <div>Install</div>
                     <div>Restart</div>
+                    <div onclick="kill('ci')"></div>
                 </div>
             </div>
+
+            <!--<div class="progress" id="ci-progress"><div></div></div>-->
+
+            <!--<div class="paper" id="ci"></div>-->
+
 
             <div class="block">
                 <div class="name">
@@ -82,11 +89,11 @@
                 </div>
                 <div>Commit message (id)</div>
                 <div class="controls">
-                    <div onclick="pull('node-mongo-frontend')">Git pull (specific)</div>
-                    <div>Start</div>
+                    <div onclick="pull('node-mongo-frontend')">Git pull</div>
+                    <div onclick="run('node-mongo-frontend')">Start</div>
                     <div>Install</div>
                     <div>Build and start prod</div>
-                    <div>Stop</div>
+                    <div onclick="kill('node-mongo-frontend')">Stop</div>
                     <div>Test</div>
                 </div>
                 <div class="buttons">
@@ -107,11 +114,11 @@
                 </div>
                 <div>Commit message (id)</div>
                 <div class="controls">
-                    <div onclick="pull('node-mongo-backend')">Git pull (specific)</div>
+                    <div onclick="pull('node-mongo-backend')">Git pull</div>
                     <div>Start default</div>
-                    <div>Start heroku</div>
+                    <div onclick="run('node-mongo-backend')">Start heroku</div>
                     <div>Install</div>
-                    <div>Stop</div>
+                    <div onclick="kill('node-mongo-backend')">Stop</div>
                     <div>Test</div>
                 </div>
                 <div class="buttons">

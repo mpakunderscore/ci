@@ -25,10 +25,18 @@ app.get('/ci/git/pull', function (request, response) {
     );
 });
 
+app.get('/ci/kill', function (request, response) {
+    response.json(services.kill(request.query.name));
+});
+
+app.get('/ci/run', function (request, response) {
+    response.json(services.run(request.query.name));
+});
+
 server.listen(port);
 
 let services = require('./server/services.js');
-services.run();
+services.runAll();
 
 let git = require('./server/git.js');
 

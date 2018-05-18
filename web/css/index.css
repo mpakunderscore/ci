@@ -90,7 +90,7 @@ main {
 }
 
 .block > div:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    /*background-color: rgba(0, 0, 0, 0.05);*/
 }
 
 .name {
@@ -139,6 +139,7 @@ span {
 .paper {
     background: rgba(255, 255, 255, 0.7);
     padding: 20px;
+    min-height: 24px;
 
     overflow: hidden;
 }
@@ -151,27 +152,34 @@ span {
 .progress {
     width: 100%;
 
+    background: rgba(255, 255, 255, 0.7);
     /*height: 2px;*/
+
 }
 
 .progress > div {
     width: 0;
-    height: 0;
+    height: 2px;
 
-    background: linear-gradient(to right, #38faff, #35daff);
     /*background-color: red;*/
 
-    transition: width 1s, height 1s;
+    transition: width 2s, height 1s;
 }
 
 .progress.active > div {
     width: 100%;
-    height: 5px;
+
+    background: linear-gradient(to right, deepskyblue, blue);
+}
+
+.progress.ok > div {
+    /*height: 0;*/
+
+    background: linear-gradient(to right, greenyellow, #00d700);
 }
 
 .progress.error > div {
     width: 100%;
-    height: 10px;
 
-    background: linear-gradient(to right, #ff4031, #ff244d);
+    background: linear-gradient(to right, #ff3b36, red);
 }
