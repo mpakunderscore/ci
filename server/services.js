@@ -6,16 +6,12 @@ let services = [
     {name: 'node-mongo-frontend', run: 'npm run start'}
 ];
 
-// {name: 'node-mongo-backend', run: 'npm start default'},
+// {name: 'node-mongo-backend', run: 'npm run start default'},
 // {name: 'node-mongo-frontend', run: 'npm run start'}
 
 let state = {};
 
-module.exports.state = state;
-
 let home = process.env.CI_HOME;
-
-// console.log(home)
 
 let spawn = require('child_process').spawn;
 
@@ -33,7 +29,7 @@ module.exports.run = function () {
         //logs
         state[service.name].logs = [];
 
-        git.pull(service.name).then(update => state[service.name].pull = update);
+        // git.pull(service.name).then(update => state[service.name].pull = update);
 
         //commit
         git.show(service.name).then(show => state[service.name].commit = show);
@@ -47,7 +43,9 @@ module.exports.run = function () {
             [service.run.split(' ')[1], service.run.split(' ')[2]],
             {cwd: home + service.name});
 
-        child.stdin.setEncoding('utf-8');
+        service.spawn = child;
+
+        // child.stdin.setEncoding('utf-8');
 
         child.stdout.on('data', function (data) {
             process.stdout.write(data);

@@ -4,6 +4,8 @@ function fillBlock(id, data) {
 
     document.getElementById(id).innerText = '';
 
+    // console.log(data)
+
     for (let i = 0; i < data.length; i++) {
 
         let div = document.createElement("div");
@@ -16,6 +18,8 @@ function fillBlock(id, data) {
 }
 
 let onLoad = function () {
+
+    console.log('onLoad')
 
     getJSON('/state', function(err, data) {
 
@@ -57,6 +61,8 @@ let commit = function (id) {
 
 let pull = function (name) {
 
+    document.getElementById(name + '-progress').classList.add('active');
+
     getJSON('/git/pull?name=' + name, function(err, data) {
 
         if (err !== null) {
@@ -65,9 +71,13 @@ let pull = function (name) {
 
             console.log(data);
 
+            fillBlock(name, data);
+            document.getElementById(name + '-progress').classList.remove('active');
+
             for (let id in data) {
 
-                state[name].logs.push(data[id]);
+                // state[name].logs.push(data[id]);
+
             }
         }
     });

@@ -3,7 +3,7 @@
 let express = require('express');
 let path = require('path');
 
-require('./server/config.js')
+require('./server/config.js');
 
 let app = express();
 
@@ -19,7 +19,10 @@ app.get('/ci/state', function (request, response) {
 });
 
 app.get('/ci/git/pull', function (request, response) {
-    response.json(git.pull(request.query.name));
+
+    git.pull(request.query.name).then(
+        data => response.json(data)
+    );
 });
 
 server.listen(port);
