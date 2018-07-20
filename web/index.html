@@ -13,8 +13,14 @@
 
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="css/media.css">
+        <link rel="stylesheet" type="text/css" href="css/back.css">
 
         <script src="js/index.js"></script>
+        <script src="js/particles.min.js"></script>
+
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>-->
+        <script src="js/socket.io.slim.js"></script>
+
 
     </head>
 
@@ -24,12 +30,15 @@
 
             <div class="block">
                 <div class="" onclick="location.href='/';" style="cursor: pointer">
-                    Leaf
+                    Go back to Leaf
                 </div>
             </div>
 
             <div class="block" style="padding: 0">
-                <img src="images/ci.png" style="width: 100%; display: block">
+                <div id="particles-js" onmouseover="changeColor();">
+                    <canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;">
+                    </canvas>
+                </div>
             </div>
 
             <div class="block">
@@ -157,5 +166,8 @@
         </main>
 
     </body>
+
+    <script src="js/back.js"></script>
+    <script src="js/client.js"></script>
 
 </html>

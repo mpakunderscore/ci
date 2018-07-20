@@ -66,8 +66,8 @@ let runService = function (service) {
 
     child.on('exit', function (data) {
         process.stdout.write('exit');
-        state[service.name].logs = ['exit'];
-        state[service.name].status = 'exit';
+        state[service.name].logs = ['Dead'];
+        state[service.name].status = 'dead';
     });
 };
 

@@ -21,6 +21,8 @@ let onLoad = function () {
 
     console.log('onLoad')
 
+    changeColor();
+
     getJSON('/state', function(err, data) {
 
         if (err !== null) {
