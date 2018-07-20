@@ -1,14 +1,18 @@
 //CLIENT
 
-let id = localStorage.getItem("id");
+// let id = localStorage.getItem("id");
 
 const port = 4000;
-const ip = "localhost:" + port + "/ci";
+const ip = "localhost:" + port;
 
-let socket = io(ip, {secure: false});
-// let socket = io(window.location.hostname, {secure: true, path: '/ci/socket.io'});
+// let socket = io(ip, {secure: false, path: '/ci/socket.io'});
+let socket = io(window.location.hostname, {secure: true, path: '/ci/socket.io'});
 
 // socket.emit("auth", id);
+
+socket.on("connect", function() {
+    socket.emit("color", "test");
+});
 
 //TODO
 // socket.on("auth", () => {

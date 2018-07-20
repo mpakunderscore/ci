@@ -8,15 +8,13 @@ require('./server/config.js');
 let app = express();
 
 //STATIC WEB
-app.use('/', express.static(path.join(__dirname, 'web')));
+app.use('/ci', express.static(path.join(__dirname, 'web')));
 
 let server = require('http').Server(app);
 
-let io = require('socket.io')(server);
+let io = require('socket.io')(server, {path: '/ci/socket.io'});
 
 const port = process.env.CI_PORT || 4000;
-
-
 
 //STATIC WEB
 // app.use('/', express.static(__dirname));
@@ -49,8 +47,8 @@ io.on('connection', (socket) => {
 
     // socket.emit('trees', JSON.stringify(forest.users[id]));
 
-    socket.emit('auth', null);
-    socket.on('auth', (id) => console.log(id));
+    socket.emit('connect', null);
+    // socket.on('auth', (id) => console.log(id));
 
     socket.on('color', (color) => console.log(color));
     socket.on('chat message', function(msg){
@@ -90,7 +88,7 @@ server.listen(port);
 // server.listen(port);
 
 let services = require('./server/services.js');
-// services.runAll();
+services.runAll();
 
 let git = require('./server/git.js');
 
