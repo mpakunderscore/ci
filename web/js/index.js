@@ -8,9 +8,9 @@ function fillBlock(id, data) {
 
     for (let i = 0; i < data.length; i++) {
 
-        let div = document.createElement("div");
-        if (data[i] === "")
-            data[i] = "\n";
+        let div = document.createElement('div');
+        if (data[i] === '')
+            data[i] = '\n';
 
         div.innerText = data[i];
         document.getElementById(id).appendChild(div);
