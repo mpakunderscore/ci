@@ -11,7 +11,7 @@ function random_rgba() {
 
 function changeColor() {
     let color = random_rgba();
-    document.getElementById('particles-js').style['background-color'] = color;
+    // document.getElementById('particles-js').style['background-color'] = color;
     console.log("color")
     sendColor(color)
 }

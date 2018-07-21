@@ -30,25 +30,20 @@
 
             <div class="block">
                 <div class="" onclick="location.href='/';" style="cursor: pointer">
-                    Go back to Leaf
-                </div>
-            </div>
-
-            <div class="block" style="padding: 0">
-                <div id="particles-js" onmouseover="changeColor();">
-                    <canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;">
-                    </canvas>
+                    leaf.place
                 </div>
             </div>
 
             <div class="block">
-                <div class="name">
-                    Server
-                </div>
-                <div>Status<span>2 / 2</span></div>
-                <div>Memory<span>37.0% used 300mb</span></div>
-                <div>CPU<span>0 2 0 0 %</span></div>
-                <div>FS<span>33% used 2.5gb</span></div>
+
+                <!--<div id="particles-js" onmouseover="changeColor();">-->
+                    <!--<canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;"></canvas>-->
+                <!--</div>-->
+
+                <div>Services<span>0 / 4</span></div>
+                <div>CPU<span>0 0 0 0 %</span></div>
+                <div>Memory<span>37.0% 3000 / 8400 mb</span></div>
+
             </div>
 
             <div class="block">
@@ -58,9 +53,6 @@
                 <div>Upload<span>14 mbit/s</span></div>
                 <div>Download<span>25 mbit/s</span></div>
                 <div>Response<span>250 ms</span></div>
-                <div class="controls">
-                    <div>Test</div>
-                </div>
             </div>
 
             <div class="block">
@@ -80,9 +72,7 @@
                 </div>
                 <div>Commit message (id)</div>
                 <div class="controls">
-                    <div onclick="pull('ci')">Git pull</div>
-                    <div>Install</div>
-                    <div>Restart</div>
+                    <div onclick="pull('ci')">Git pull, npm install, restart</div>
                     <div onclick="kill('ci')"></div>
                 </div>
             </div>
@@ -90,6 +80,13 @@
             <!--<div class="progress" id="ci-progress"><div></div></div>-->
 
             <!--<div class="paper" id="ci"></div>-->
+
+            <div class="block">
+                <div class="name">
+                    Storage
+                </div>
+                <div>Disk<span>33% 2.5 / 8 gb</span></div>
+            </div>
 
 
             <div class="block">

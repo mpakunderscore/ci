@@ -85,8 +85,8 @@ main {
 }
 
 .block > div {
-    padding-left: 5px;
-    padding-right: 5px;
+    /*padding-left: 5px;*/
+    /*padding-right: 5px;*/
 }
 
 .block > div:hover {
@@ -109,7 +109,7 @@ span {
 }
 
 .controls > div {
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 .controls > div:hover {

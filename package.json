@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "child_process": "^1.0.2",
+    "cpu-load": "^1.0.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "free-memory": "^1.0.0",

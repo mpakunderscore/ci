@@ -21,7 +21,7 @@ let onLoad = function () {
 
     console.log('onLoad')
 
-    changeColor();
+    // changeColor();
 
     getJSON('/state', function(err, data) {
 
